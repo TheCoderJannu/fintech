@@ -1,4 +1,4 @@
-require('dotenv').config();
+﻿require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 const app = express();
 
 // ============================================================
-// 1. SECURITY HEADERS — Block clickjacking, XSS, MIME sniffing
+// 1. SECURITY HEADERS â€” Block clickjacking, XSS, MIME sniffing
 // ============================================================
 app.use((req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -80,7 +80,7 @@ const upload = multer({
 });
 
 // ============================================================
-// 4. PERSISTENT AD STORAGE (JSON file — survives server restart)
+// 4. PERSISTENT AD STORAGE (JSON file â€” survives server restart)
 // ============================================================
 const ADS_FILE = path.join(__dirname, 'data', 'ads.json');
 
@@ -97,7 +97,7 @@ function loadAds() {
             return JSON.parse(data);
         }
     } catch (err) {
-        console.error('⚠️ Error loading ads:', err.message);
+        console.error('âš ï¸ Error loading ads:', err.message);
     }
     return { ads: [], counter: 1 };
 }
@@ -106,14 +106,14 @@ function saveAds(data) {
     try {
         fs.writeFileSync(ADS_FILE, JSON.stringify(data, null, 2), 'utf-8');
     } catch (err) {
-        console.error('⚠️ Error saving ads:', err.message);
+        console.error('âš ï¸ Error saving ads:', err.message);
     }
 }
 
 let adStore = loadAds();
 
 // ============================================================
-// 5. GMAIL EMAIL SETUP (Nodemailer — Direct to Gmail)
+// 5. GMAIL EMAIL SETUP (Nodemailer â€” Direct to Gmail)
 // ============================================================
 let emailTransporter = null;
 
@@ -133,15 +133,15 @@ function setupEmail() {
         // Verify connection
         emailTransporter.verify((err) => {
             if (err) {
-                console.error('⚠️ Gmail connection failed:', err.message);
-                console.log('📧 Check your GMAIL_USER and GMAIL_APP_PASSWORD in .env');
+                console.error('âš ï¸ Gmail connection failed:', err.message);
+                console.log('ðŸ“§ Check your GMAIL_USER and GMAIL_APP_PASSWORD in .env');
                 emailTransporter = null;
             } else {
-                console.log('✅ Gmail email connected — leads will be emailed automatically');
+                console.log('âœ… Gmail email connected â€” leads will be emailed automatically');
             }
         });
     } else {
-        console.log('📧 Gmail not configured — leads will only be logged to terminal');
+        console.log('ðŸ“§ Gmail not configured â€” leads will only be logged to terminal');
         console.log('   To enable: Set GMAIL_USER and GMAIL_APP_PASSWORD in .env');
     }
 }
@@ -157,11 +157,11 @@ async function sendLeadEmail(name, phone, category, service) {
     const mailOptions = {
         from: `"Navya Fintech Leads" <${process.env.GMAIL_USER}>`,
         to: toEmail,
-        subject: `🔔 New Lead: ${name} — ${category} → ${service}`,
+        subject: `ðŸ”” New Lead: ${name} â€” ${category} â†’ ${service}`,
         html: `
             <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0;">
                 <div style="background: linear-gradient(135deg, #00f2fe, #4facfe); padding: 28px; text-align: center;">
-                    <h1 style="color: #000; margin: 0; font-size: 24px; font-weight: 700;">📋 New Client Application</h1>
+                    <h1 style="color: #000; margin: 0; font-size: 24px; font-weight: 700;">ðŸ“‹ New Client Application</h1>
                     <p style="color: rgba(0,0,0,0.6); margin: 6px 0 0; font-size: 14px;">Navya Fintech Lead Management</p>
                 </div>
                 <div style="padding: 32px;">
@@ -186,12 +186,12 @@ async function sendLeadEmail(name, phone, category, service) {
                         </tr>
                     </table>
                     <div style="margin-top: 28px; display: flex; gap: 12px;">
-                        <a href="https://wa.me/91${cleanPhone}" target="_blank" style="display: inline-block; background: #25D366; color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14px;">💬 WhatsApp Client</a>
-                        <a href="tel:${phone}" style="display: inline-block; background: #4facfe; color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14px;">📞 Call Now</a>
+                        <a href="https://wa.me/91${cleanPhone}" target="_blank" style="display: inline-block; background: #25D366; color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14px;">ðŸ’¬ WhatsApp Client</a>
+                        <a href="tel:${phone}" style="display: inline-block; background: #4facfe; color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14px;">ðŸ“ž Call Now</a>
                     </div>
                 </div>
                 <div style="background: #0f172a; padding: 18px; text-align: center;">
-                    <p style="color: #64748b; margin: 0; font-size: 12px;">Navya Fintech • Visnagar, Gujarat • Automated Lead System</p>
+                    <p style="color: #64748b; margin: 0; font-size: 12px;">Navya Fintech â€¢ Visnagar, Gujarat â€¢ Automated Lead System</p>
                 </div>
             </div>
         `
@@ -199,10 +199,10 @@ async function sendLeadEmail(name, phone, category, service) {
 
     try {
         await emailTransporter.sendMail(mailOptions);
-        console.log(`✅ Email sent to ${toEmail}`);
+        console.log(`âœ… Email sent to ${toEmail}`);
         return true;
     } catch (err) {
-        console.error('⚠️ Email failed:', err.message);
+        console.error('âš ï¸ Email failed:', err.message);
         return false;
     }
 }
@@ -329,7 +329,7 @@ app.post('/api/admin/login', async (req, res) => {
     // Check rate limit
     const rateCheck = checkRateLimit(ip);
     if (!rateCheck.allowed) {
-        console.log(`🚫 Blocked login attempt from ${ip} (locked for ${rateCheck.remaining} min)`);
+        console.log(`ðŸš« Blocked login attempt from ${ip} (locked for ${rateCheck.remaining} min)`);
         return res.status(429).json({
             success: false,
             error: `Too many failed attempts. Try again in ${rateCheck.remaining} minutes.`
@@ -344,7 +344,7 @@ app.post('/api/admin/login', async (req, res) => {
     const envUser = process.env.ADMIN_USERNAME;
     const envPass = process.env.ADMIN_PASSWORD;
 
-    // Only accept credentials from .env — NO hardcoded fallback
+    // Only accept credentials from .env â€” NO hardcoded fallback
     if (envUser && envPass && username === envUser && password === envPass) {
         clearAttempts(ip);
 
@@ -352,7 +352,7 @@ app.post('/api/admin/login', async (req, res) => {
         const token = crypto.randomBytes(32).toString('hex');
         activeSessions.set(token, { createdAt: Date.now(), ip });
 
-        console.log(`✅ Admin login successful from ${ip}`);
+        console.log(`âœ… Admin login successful from ${ip}`);
         return res.status(200).json({ success: true, token });
     }
 
@@ -361,7 +361,7 @@ app.post('/api/admin/login', async (req, res) => {
     const record = loginAttempts.get(ip);
     const attemptsLeft = MAX_ATTEMPTS - record.count;
 
-    console.log(`❌ Failed login attempt from ${ip} (${attemptsLeft} attempts remaining)`);
+    console.log(`âŒ Failed login attempt from ${ip} (${attemptsLeft} attempts remaining)`);
 
     if (attemptsLeft <= 0) {
         return res.status(429).json({
@@ -428,7 +428,7 @@ app.post('/api/admin/ads', requireAdmin, upload.single('media'), (req, res) => {
     adStore.counter++;
     saveAds(adStore);
 
-    console.log(`📢 New ad published: "${title}" (${mediaType})`);
+    console.log(`ðŸ“¢ New ad published: "${title}" (${mediaType})`);
     res.status(200).json({ message: 'Advertisement published!', ad: newAd });
 });
 
@@ -452,7 +452,7 @@ app.delete('/api/admin/ads/:id', requireAdmin, (req, res) => {
     adStore.ads = adStore.ads.filter(a => a._id !== req.params.id);
     saveAds(adStore);
 
-    console.log(`🗑️ Ad deleted: "${ad.title}"`);
+    console.log(`ðŸ—‘ï¸ Ad deleted: "${ad.title}"`);
     res.status(200).json({ message: 'Advertisement removed.' });
 });
 
@@ -474,9 +474,12 @@ app.use((err, req, res, next) => {
 // 9. START SERVER
 // ============================================================
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`\n🚀 Navya Fintech Server running on port ${PORT}`);
-    console.log(`🌐 Website:  http://localhost:${PORT}`);
-    console.log(`🔐 Admin:    http://localhost:${PORT}/admin.html`);
-    console.log(`📋 Ads loaded: ${adStore.ads.length} active\n`);
-});
+
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Navya Fintech Server running on port ${PORT}`);
+        console.log(`Website: http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
