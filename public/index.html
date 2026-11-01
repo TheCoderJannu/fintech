@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVYA FINTECH | India's Elite Financial Services Partner</title>
+    <meta name="description" content="Navya Fintech — India's most trusted financial services company. Home Loans, Personal Loans, Business Loans, Insurance, ITR Filing & more with 98.5% approval rate.">
+    <link rel="icon" type="image/jpeg" href="assets/navyafintech.jpeg">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-logo"><i class="fas fa-layer-group"></i> NAVYA FINTECH</div>
+        <div class="loader-bar-track"><div class="loader-bar"></div></div>
+    </div>
+
+    <div class="transition-swipe"></div>
+
+    <div id="three-canvas-container"></div>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Service Detail Modal -->
+    <div id="serviceModal" class="modal-overlay">
+        <div class="glass-container modal-content">
+            <button class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/918238990191?text=Hello%20Navya%20Fintech,%20I%20am%20interested%20in%20your%20services." class="premium-wa-btn" target="_blank" id="waBtn">
+        <div class="wa-icon-bg"><i class="fab fa-whatsapp"></i></div>
+        <div class="wa-text">
+            <span class="wa-title">Chat with an Expert</span>
+            <span class="wa-sub">Typically replies in 5 mins</span>
+        </div>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="glass-nav" id="mainNav">
+        <div class="logo" onclick="document.querySelector('.nav-item[data-target=home-page]').click()">
+            <span class="gradient-text"><i class="fas fa-layer-group"></i> NAVYA</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#" data-target="home-page" class="nav-item active-link">Home</a></li>
+            <li><a href="#" data-target="features-page" class="nav-item">Features</a></li>
+            <li><a href="#" data-target="services-page" class="nav-item">Services</a></li>
+            <li><a href="#" data-target="apply-page" class="nav-item">Apply</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Menu"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <!-- Main App Content -->
+    <main id="app-content">
+        
+        <!-- ===== HOME PAGE ===== -->
+        <section id="home-page" class="page active">
+            
+            <!-- Hero Section -->
+            <div class="hero">
+                <span class="hero-badge"><i class="fas fa-shield-halved"></i> RBI Compliant • ISO 27001 Certified</span>
+                <h1>
+                    <span>India's Most Trusted</span><br>
+                    <span class="gradient-text" id="heroTyped">Financial Partner</span>
+                </h1>
+                <p class="hero-subtitle">From instant personal loans to expert ITR filing — we simplify every financial decision with transparency, speed, and 98.5% approval rate.</p>
+                <div class="hero-actions">
+                    <button class="btn primary-btn nav-trigger" data-target="apply-page"><i class="fas fa-rocket"></i> Apply Now</button>
+                    <button class="btn outline-btn nav-trigger" data-target="services-page"><i class="fas fa-compass"></i> Explore Services</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Ads Carousel -->
+            <div class="dynamic-ads-section" id="dynamicAdsWrapper" style="display: none;">
+                <h3 class="gradient-text text-center reveal"><i class="fas fa-bullhorn"></i> Latest Updates & Offers</h3>
+                <div class="swiper adSwiper reveal reveal-delay-1">
+                    <div class="swiper-wrapper" id="dynamicAdsContainer"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid stats-grid mt-5">
+                <div class="glass-card stat-card reveal" data-tilt>
+                    <div class="stat-value">
+                        <h3 class="counter gradient-text" data-target="98.5">0</h3>
+                        <span class="symbol">%</span>
+                    </div>
+                    <p>Approval Rate</p>
+                </div>
+                <div class="glass-card stat-card reveal reveal-delay-1" data-tilt>
+                    <div class="stat-value">
+                        <span class="symbol">₹</span>
+                        <h3 class="counter gradient-text" data-target="500">0</h3>
+                        <span class="symbol">Cr+</span>
+                    </div>
+                    <p>Capital Disbursed</p>
+                </div>
+                <div class="glass-card stat-card reveal reveal-delay-2" data-tilt>
+                    <div class="stat-value">
+                        <h3 class="counter gradient-text" data-target="15000">0</h3>
+                        <span class="symbol">+</span>
+                    </div>
+                    <p>Active Clients</p>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="mt-5 section-content pt-5">
+                <h2 class="text-center reveal">Real User <span class="gradient-text">Experiences</span></h2>
+                <p class="text-center text-muted mb-4 reveal reveal-delay-1">Trusted by thousands. Rated 4.9/5 on Google Reviews.</p>
+                
+                <div class="swiper mySwiper reveal reveal-delay-2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide glass-container data-slide p-5">
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p>"I was struggling to get a business loan from standard banks due to complex paperwork. Navya Fintech sorted my file and disbursed ₹15 Lakhs in just 3 days."</p>
+                            <h4 class="mt-3">- Amit Sharma, Retail Owner</h4>
+                        </div>
+                        <div class="swiper-slide glass-container data-slide p-5">
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p>"Their CA team handled my complex ITR filing effortlessly. Navya Fintech actually guided me on tax-saving investments and saved me over ₹45,000."</p>
+                            <h4 class="mt-3">- Sneha Desai, IT Professional</h4>
+                        </div>
+                        <div class="swiper-slide glass-container data-slide p-5">
+                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                            <p>"The lowest home loan rates I could find. The entire process was digital, and my relationship manager was always available on WhatsApp."</p>
+                            <h4 class="mt-3">- Vikram Singh, Software Engineer</h4>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <!-- 3-Step Process -->
+            <div class="mt-5 section-content">
+                <h2 class="text-center reveal mt-5">Our 3-Step <span class="gradient-text">Process</span></h2>
+                <div class="grid timeline-grid mt-4">
+                    <div class="glass-container p-5 text-center reveal">
+                        <h1 class="gradient-text display-font">01</h1>
+                        <h4 class="mt-3">Digital Application</h4>
+                        <p class="mt-2 text-muted">Fill out our encrypted online form and select your required financial service in under 3 minutes.</p>
+                    </div>
+                    <div class="glass-container p-5 text-center reveal reveal-delay-1">
+                        <h1 class="gradient-text display-font">02</h1>
+                        <h4 class="mt-3">AI Verification</h4>
+                        <p class="mt-2 text-muted">Our proprietary algorithm instantly verifies your uploaded KYC documents without manual delays.</p>
+                    </div>
+                    <div class="glass-container p-5 text-center reveal reveal-delay-2">
+                        <h1 class="gradient-text display-font">03</h1>
+                        <h4 class="mt-3">Instant Disbursal</h4>
+                        <p class="mt-2 text-muted">Upon approval, funds or compliance documents are directly routed to your bank or email within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURES PAGE ===== -->
+        <section id="features-page" class="page">
+            <div class="section-content">
+                <h2 class="reveal text-center">The Navya <span class="gradient-text">Advantage</span></h2>
+                <p class="text-center text-muted mb-5 reveal reveal-delay-1">Why thousands of businesses and individuals choose our ecosystem.</p>
+                
+                <div class="grid features-grid mb-5">
+                    <div class="glass-container feature-box reveal interactive-hover">
+                        <i class="fas fa-bolt fa-2x gradient-text feature-icon"></i>
+                        <h4>Lightning Fast Processing</h4>
+                        <p class="mt-2 text-muted">We bypass legacy banking systems. Get your loan approved or ITR filed up to 4x faster than industry standards.</p>
+                    </div>
+                    <div class="glass-container feature-box reveal reveal-delay-1 interactive-hover">
+                        <i class="fas fa-percent fa-2x gradient-text feature-icon"></i>
+                        <h4>Zero Hidden Margins</h4>
+                        <p class="mt-2 text-muted">What you see is exactly what you pay. We guarantee complete transparency in processing fees and interest rates.</p>
+                    </div>
+                    <div class="glass-container feature-box reveal reveal-delay-2 interactive-hover">
+                        <i class="fas fa-headset fa-2x gradient-text feature-icon"></i>
+                        <h4>Dedicated Relationship Managers</h4>
+                        <p class="mt-2 text-muted">No automated phone trees. You get a direct WhatsApp line to a dedicated financial expert for your file.</p>
+                    </div>
+                </div>
+
+                <div class="glass-container p-5 mb-5 reveal">
+                    <h3 class="mb-4"><i class="fas fa-shield-halved gradient-text"></i> Bank-Grade Security Infrastructure</h3>
+                    <ul class="checklist two-col-list">
+                        <li><i class="fas fa-check-circle text-gradient"></i> AES-256 Bit Data Encryption</li>
+                        <li><i class="fas fa-check-circle text-gradient"></i> RBI Compliant Processing</li>
+                        <li><i class="fas fa-check-circle text-gradient"></i> Multi-Factor Authentication</li>
+                        <li><i class="fas fa-check-circle text-gradient"></i> ISO 27001 Certified Servers</li>
+                        <li><i class="fas fa-check-circle text-gradient"></i> Strict Zero Data-Selling Policy</li>
+                        <li><i class="fas fa-check-circle text-gradient"></i> Automated Daily Backups</li>
+                    </ul>
+                </div>
+
+                <h2 class="reveal mt-5 text-center">Frequently Asked <span class="gradient-text">Questions</span></h2>
+                <div class="faq-container mt-4">
+                    <div class="glass-container faq-item p-4 mb-3 reveal" onclick="toggleFaq(this)">
+                        <h4 class="m-0 cursor-pointer">What is the minimum CIBIL score required? <i class="fas fa-chevron-down text-gradient"></i></h4>
+                        <div class="faq-answer">We generally recommend a minimum CIBIL score of 650 for the best interest rates. However, we have special schemes and collateral-based options for new-to-credit customers or those with lower scores.</div>
+                    </div>
+                    <div class="glass-container faq-item p-4 mb-3 reveal reveal-delay-1" onclick="toggleFaq(this)">
+                        <h4 class="m-0 cursor-pointer">Are there prepayment penalties? <i class="fas fa-chevron-down text-gradient"></i></h4>
+                        <div class="faq-answer">For personal and floating-rate home loans, there are absolutely zero prepayment penalties. You can close your loan early and save on interest anytime without extra charges.</div>
+                    </div>
+                    <div class="glass-container faq-item p-4 mb-3 reveal reveal-delay-2" onclick="toggleFaq(this)">
+                        <h4 class="m-0 cursor-pointer">Do you offer loans for individuals with no credit history? <i class="fas fa-chevron-down text-gradient"></i></h4>
+                        <div class="faq-answer">Yes. If you have no CIBIL score (-1 or 0), we can evaluate your profile based on your income stability, bank statement trends, or against a co-applicant.</div>
+                    </div>
+                    <div class="glass-container faq-item p-4 mb-3 reveal" onclick="toggleFaq(this)">
+                        <h4 class="m-0 cursor-pointer">What is the process for ITR filing through Navya Fintech? <i class="fas fa-chevron-down text-gradient"></i></h4>
+                        <div class="faq-answer">Simply upload your Form 16 or Income statements in the 'Apply' section. One of our empaneled Chartered Accountants will contact you, maximize your deductions, and file it directly with the Income Tax Department within 24 hours.</div>
+                    </div>
+                    <div class="glass-container faq-item p-4 mb-3 reveal reveal-delay-1" onclick="toggleFaq(this)">
+                        <h4 class="m-0 cursor-pointer">Are there any upfront processing fees? <i class="fas fa-chevron-down text-gradient"></i></h4>
+                        <div class="faq-answer">No. Navya Fintech never asks for upfront processing fees before your loan is approved. Any applicable processing fees are transparently deducted from your final disbursed loan amount.</div>
+                    </div>
+                    <div class="glass-container faq-item p-4 mb-3 reveal reveal-delay-2" onclick="toggleFaq(this)">
+                        <h4 class="m-0 cursor-pointer">Can I track my application status? <i class="fas fa-chevron-down text-gradient"></i></h4>
+                        <div class="faq-answer">Yes! Once you apply, you will receive a WhatsApp message from your dedicated manager. You can ping them anytime for a live update on your file's status.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICES PAGE ===== -->
+        <section id="services-page" class="page">
+            <div class="section-content">
+                <h2 class="reveal text-center">Comprehensive <span class="gradient-text">Ecosystem</span></h2>
+                <p class="text-center text-muted mb-4 reveal reveal-delay-1">Select a category below to explore our specific financial products.</p>
+                
+                <div class="service-filters reveal reveal-delay-2">
+                    <button class="filter-btn active" data-filter="all">All Ecosystem</button>
+                    <button class="filter-btn" data-filter="loan">Lending & Loans</button>
+                    <button class="filter-btn" data-filter="insurance">Insurance</button>
+                    <button class="filter-btn" data-filter="compliance">Tax & Legal</button>
+                </div>
+                
+                <div class="grid services-grid mt-4">
+                    <div class="glass-card service-card reveal" data-category="loan" data-tilt onclick="openModal('home_loan')">
+                        <div class="card-glow"></div><i class="fas fa-home fa-3x gradient-text"></i>
+                        <h3>Home Loan</h3><p class="text-muted">Rates, eligibility & docs.</p>
+                    </div>
+                    <div class="glass-card service-card reveal reveal-delay-1" data-category="loan" data-tilt onclick="openModal('personal_loan')">
+                        <div class="card-glow"></div><i class="fas fa-user-tie fa-3x gradient-text"></i>
+                        <h3>Personal Loan</h3><p class="text-muted">Limits, criteria & speed.</p>
+                    </div>
+                    <div class="glass-card service-card reveal reveal-delay-2" data-category="loan" data-tilt onclick="openModal('business_loan')">
+                        <div class="card-glow"></div><i class="fas fa-briefcase fa-3x gradient-text"></i>
+                        <h3>Business Loan</h3><p class="text-muted">MSME limits & GST reqs.</p>
+                    </div>
+                    <div class="glass-card service-card reveal reveal-delay-3" data-category="loan" data-tilt onclick="openModal('tractor_loan')">
+                        <div class="card-glow"></div><i class="fas fa-tractor fa-3x gradient-text"></i>
+                        <h3>Tractor & JCB</h3><p class="text-muted">Agri-finance subsidies.</p>
+                    </div>
+
+                    <div class="glass-card service-card reveal" data-category="insurance" data-tilt onclick="openModal('life_insurance')">
+                        <div class="card-glow"></div><i class="fas fa-heartbeat fa-3x gradient-text"></i>
+                        <h3>Term Life Insurance</h3><p class="text-muted">Cover limits & premiums.</p>
+                    </div>
+                    <div class="glass-card service-card reveal reveal-delay-1" data-category="insurance" data-tilt onclick="openModal('health_insurance')">
+                        <div class="card-glow"></div><i class="fas fa-notes-medical fa-3x gradient-text"></i>
+                        <h3>Health & Mediclaim</h3><p class="text-muted">Cashless networks & family plans.</p>
+                    </div>
+                    <div class="glass-card service-card reveal reveal-delay-2" data-category="insurance" data-tilt onclick="openModal('motor_insurance')">
+                        <div class="card-glow"></div><i class="fas fa-car-crash fa-3x gradient-text"></i>
+                        <h3>Motor Insurance</h3><p class="text-muted">Zero-dep & comprehensive covers.</p>
+                    </div>
+
+                    <div class="glass-card service-card reveal" data-category="compliance" data-tilt onclick="openModal('tax_services')">
+                        <div class="card-glow"></div><i class="fas fa-file-invoice-dollar fa-3x gradient-text"></i>
+                        <h3>ITR & PF Services</h3><p class="text-muted">CA compliance packages.</p>
+                    </div>
+                    <div class="glass-card service-card reveal reveal-delay-1" data-category="compliance" data-tilt onclick="openModal('legal_ids')">
+                        <div class="card-glow"></div><i class="fas fa-id-card fa-3x gradient-text"></i>
+                        <h3>PAN & Driving Licence</h3><p class="text-muted">Fast-track application processing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== APPLY PAGE ===== -->
+        <section id="apply-page" class="page">
+            <div class="section-content">
+                <h2 class="reveal text-center">Take <span class="gradient-text">Action</span></h2>
+                
+                <div class="split-layout mt-5">
+                    <!-- EMI Calculator -->
+                    <div class="glass-container emi-box reveal" data-tilt>
+                        <h3><i class="fas fa-calculator gradient-text"></i> EMI Engine</h3>
+                        <div class="input-group mt-3">
+                            <label class="form-section-label">Loan Amount (₹)</label>
+                            <input type="number" id="amount" placeholder="e.g., 1500000">
+                        </div>
+                        <div class="input-group">
+                            <label class="form-section-label">Interest Rate (%)</label>
+                            <input type="number" id="rate" placeholder="e.g., 8.5" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label class="form-section-label">Tenure (Months)</label>
+                            <input type="number" id="months" placeholder="e.g., 120">
+                        </div>
+                        <button onclick="calculateEMI()" class="btn outline-btn w-100 magnetic-btn">Calculate Output</button>
+                        <div class="emi-output mt-4 text-center">
+                            <p class="text-muted">Estimated Monthly Installment</p>
+                            <h2 id="emi-result" class="gradient-text">₹ 0.00</h2>
+                        </div>
+                    </div>
+
+                    <!-- Application Form -->
+                    <form id="applyForm" class="glass-container form-grid reveal reveal-delay-1">
+                        <h3><i class="fas fa-fingerprint gradient-text"></i> Secure Application</h3>
+                        <input type="text" name="name" placeholder="Legal Full Name" required>
+                        <input type="tel" name="phone" placeholder="Registered Mobile Number" required>
+                        
+                        <input type="hidden" id="selectedCategory" name="category" value="">
+                        <input type="hidden" id="selectedService" name="service" value="">
+
+                        <label class="form-section-label">1. Choose Business Department</label>
+                        <div class="form-category-grid">
+                            <div class="form-cat-card" data-category="loan"><i class="fas fa-hand-holding-usd"></i><span>Loans</span></div>
+                            <div class="form-cat-card" data-category="insurance"><i class="fas fa-shield-alt"></i><span>Insurance</span></div>
+                            <div class="form-cat-card" data-category="tax"><i class="fas fa-file-invoice-dollar"></i><span>Income Tax</span></div>
+                            <div class="form-cat-card" data-category="rto"><i class="fas fa-id-card"></i><span>RTO</span></div>
+                            <div class="form-cat-card" data-category="other"><i class="fas fa-cubes"></i><span>Other</span></div>
+                        </div>
+
+                        <div class="form-sub-panel" id="panel-loan">
+                            <label class="form-section-label">2. Select Required Loan Option</label>
+                            <div class="sub-options-pills">
+                                <span class="sub-pill" data-value="Home Loan">Home Loan</span>
+                                <span class="sub-pill" data-value="Personal Loan">Personal Loan</span>
+                                <span class="sub-pill" data-value="Business Loan">Business Loan</span>
+                                <span class="sub-pill" data-value="Tractor/JCB Loan">Tractor & JCB Loan</span>
+                            </div>
+                        </div>
+
+                        <div class="form-sub-panel" id="panel-insurance">
+                            <label class="form-section-label">2. Select Insurance Policy Cover</label>
+                            <div class="sub-options-pills">
+                                <span class="sub-pill" data-value="Life Insurance">Term Life Insurance</span>
+                                <span class="sub-pill" data-value="Health Insurance">Health & Mediclaim</span>
+                                <span class="sub-pill" data-value="Motor Insurance">Motor Insurance</span>
+                            </div>
+                        </div>
+
+                        <div class="form-sub-panel" id="panel-tax">
+                            <label class="form-section-label">2. Select Tax Compliance Assignment</label>
+                            <div class="sub-options-pills">
+                                <span class="sub-pill" data-value="ITR Filing">New ITR Return Filing</span>
+                                <span class="sub-pill" data-value="PF Withdrawal">Provident Fund (PF) Withdrawal</span>
+                                <span class="sub-pill" data-value="GST Audit">GST Returns & Auditing</span>
+                            </div>
+                        </div>
+
+                        <div class="form-sub-panel" id="panel-rto">
+                            <label class="form-section-label">2. Select Government Desk Option</label>
+                            <div class="sub-options-pills">
+                                <span class="sub-pill" data-value="Driving Licence">Driving Licence / Renewal</span>
+                                <span class="sub-pill" data-value="PAN Card Application">New PAN Card Issuance</span>
+                                <span class="sub-pill" data-value="Vehicle RTO Work">Vehicle Registration Registry</span>
+                            </div>
+                        </div>
+
+                        <div class="form-sub-panel" id="panel-other">
+                            <label class="form-section-label">2. Select Requirement Metric</label>
+                            <div class="sub-options-pills">
+                                <span class="sub-pill" data-value="General Inquiry">General Business Query</span>
+                                <span class="sub-pill" data-value="Custom Planning">Custom Wealth Consultation</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn primary-btn w-100 magnetic-btn mt-3">Submit Encrypted Request</button>
+                        <p id="formStatus" class="status-msg text-center mt-3"></p>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="glass-container mt-5 p-5 text-center reveal">
+                    <h3>NAVYA <span class="gradient-text">FINTECH</span></h3>
+                    <p class="mt-3"><i class="fas fa-map-marker-alt text-gradient"></i> 141 First Floor, Tirupati Market, Opposite CN College, Visnagar, Gujarat - 384315</p>
+                    <p class="mt-2"><i class="fas fa-phone text-gradient"></i> +91 82389 90191 | +91 70698 72421</p>
+                    <p class="mt-2"><i class="fas fa-envelope text-gradient"></i> <a href="mailto:navyafintech1@gmail.com" class="text-gradient" style="text-decoration: none; font-weight: bold;">navyafintech1@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="siteFooter">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3 class="gradient-text"><i class="fas fa-layer-group"></i> NAVYA FINTECH</h3>
+                <p class="mt-2">India's most trusted financial services partner. We simplify loans, insurance, taxation, and compliance with speed and transparency.</p>
+                <div class="footer-social">
+                    <a href="https://wa.me/918238990191" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:navyafintech1@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+918238990191" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#" class="nav-trigger" data-target="services-page">Home Loan</a></li>
+                    <li><a href="#" class="nav-trigger" data-target="services-page">Personal Loan</a></li>
+                    <li><a href="#" class="nav-trigger" data-target="services-page">Business Loan</a></li>
+                    <li><a href="#" class="nav-trigger" data-target="services-page">Insurance</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Compliance</h4>
+                <ul>
+                    <li><a href="#" class="nav-trigger" data-target="services-page">ITR Filing</a></li>
+                    <li><a href="#" class="nav-trigger" data-target="services-page">GST Services</a></li>
+                    <li><a href="#" class="nav-trigger" data-target="services-page">PAN Card</a></li>
+                    <li><a href="#" class="nav-trigger" data-target="services-page">Driving Licence</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#" class="nav-trigger" data-target="features-page">Why Navya?</a></li>
+                    <li><a href="#" class="nav-trigger" data-target="features-page">FAQs</a></li>
+                    <li><a href="#" class="nav-trigger" data-target="apply-page">Contact Us</a></li>
+                    <li><a href="admin.html">Admin Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Navya Fintech. All rights reserved.</span>
+            <span>Built with <i class="fas fa-heart" style="color: var(--gradient-1);"></i> in Gujarat, India</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
